@@ -14,4 +14,4 @@ build:
 .PHONY: deploy
 deploy:
 	@echo "deploy the package"
-	$(docker_run_sam_cli) sam deploy
+	sam deploy --confirm-changeset

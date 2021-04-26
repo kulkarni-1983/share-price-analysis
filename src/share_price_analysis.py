@@ -28,7 +28,8 @@ class SharePriceAnalysis:
             if share_prices[current_position] < share_prices[smallest_position]:
                 smallest_position = current_position
 
-        return SharePriceAnalysis.format_profit_details(share_prices, profit_details)
+        return SharePriceAnalysis.format_profit_details(
+            share_prices, profit_details, formatted_start_time)
 
     @staticmethod
     def format_profit_details(share_prices, profit_details, formatted_start_time):
