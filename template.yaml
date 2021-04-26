@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: share-prices
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  SharePricesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+
+Outputs:
+  SharePricesFunction:
+    Description: "Share Prices Lambda Function ARN"
+    Value: !GetAtt SharePricesFunction.Arn
+  SharePricesFunctionIamRole:
+    Description: "Analysis the share prices"
+    Value: !GetAtt SharePricesFunctionRole.Arn
