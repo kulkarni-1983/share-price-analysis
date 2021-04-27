@@ -148,6 +148,23 @@ def test_get_max_profit_multiple_same_profits():
     }
 
 
+def test_get_max_profit_multiple_max_profit_at_end():
+    start_time = "2021-04-26 10:00:00"
+    share_prices = [10, 7, 11, 5, 10, 4, 12]
+    result = SharePriceAnalysis.get_max_profit(start_time, share_prices)
+    assert result == {
+        "max_profit": 8,
+        "buy_details": {
+            "time": "2021-04-26 10:05:00",
+            "value": 4
+        },
+        "sell_details": {
+            "time": "2021-04-26 10:06:00",
+            "value": 12
+        }
+    }
+
+
 def test_get_max_profit_large_profits():
     start_time = "2021-04-26 10:00:00"
     share_prices = [
