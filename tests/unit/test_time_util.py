@@ -38,4 +38,4 @@ def test_format_start_time_raises_on_invalid_format():
     invalid_time = "2021-04-26 __invalid__"
     with pytest.raises(ValueError) as error:
         TimeUtil.format_start_time(invalid_time)
-    assert str(error.value) == "Expect time in YYYY:MM:DD HH:MM:SS format"
+    assert str(error.value) == "Expect time in YYYY-MM-DD HH:MM:SS format"

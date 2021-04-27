@@ -16,7 +16,7 @@
 
 ### Input
 Lambda handler expects two values in the event
-1. `start_time`(string) : Date and time of trading start. Assumes input in **YYYY:MM:DD HH:MM:SS** format. Appropriate error message is sent if not in above format
+1. `start_time`(string) : Date and time of trading start. Assumes input in **YYYY-MM-DD HH:MM:SS** format. Appropriate error message is sent if not in above format
 2. `share_prices`(List): List of share prices. Requires at-least 2 values to compute the profit. 
 
 ### Response:

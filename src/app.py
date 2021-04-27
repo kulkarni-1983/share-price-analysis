@@ -103,4 +103,4 @@ class TimeUtil:
         try:
             return dt.datetime.strptime(start_time, '%Y-%m-%d %H:%M:%S')
         except ValueError as error:
-            raise ValueError("Expect time in YYYY:MM:DD HH:MM:SS format") from error
+            raise ValueError("Expect time in YYYY-MM-DD HH:MM:SS format") from error
