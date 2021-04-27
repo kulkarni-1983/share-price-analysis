@@ -2,9 +2,9 @@
 
 ## Highlights
 
-- Serverless lambda package analysis the list of share prices for a day and returns the maximum profit achieved when shares are brought and sold at a particular time
+- Serverless lambda package analyses the list of share prices for a day and returns the maximum profit achieved when shares are bought and sold at a particular time
 - Takes `start_time` and `share_prices` as input
-- Output provides maximum profit that can achieved with corresponding buy and sell details with buy being at least a minute before the sell
+- Output provides maximum profit that can be achieved with corresponding `buy` and `sell` details with `buy` being at least a minute before the sell
 - Code and unit testing done using **Python** as the programming language
 - Validates `autopep8` and `pylint` standards
 - Repository follows [3 musketeers](https://amaysim.engineering/the-3-musketeers-how-make-docker-and-compose-enable-us-to-release-many-times-a-day-e92ca816ef17) approach of docker-compose, dockerfile and Makefile
@@ -20,8 +20,8 @@ Lambda handler expects two values in the event
 2. `share_prices`(List): List of share prices. Requires at-least 2 values to compute the profit. 
 
 ### Response:
-Returns the maximum profit with a buy and sell share price details
-response format: 
+Returns the maximum profit with a `buy` and `sell` share price details.
+Response format: 
 ```
 {
     "max_profit": 188,
