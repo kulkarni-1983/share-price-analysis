@@ -1,0 +1,28 @@
+[MESSAGES CONTROL]
+
+# Disable the rule for logging format interpolation using %: W1202
+disable=missing-module-docstring,
+        missing-class-docstring,
+        missing-function-docstring,
+        unnecessary-comprehension,
+        logging-format-interpolation,
+        logging-fstring-interpolation
+
+[FORMAT]
+
+# Expected format of line ending, e.g. empty (any line ending), LF or CRLF.
+expected-line-ending-format=LF
+
+# Maximum number of characters on a single line.
+max-line-length=100
+
+indent-string='    '
+
+[DESIGN]
+
+# Minimum number of public methods for a class (see R0903).
+min-public-methods=1
+
+[SIMILARITIES]
+
+ignore-imports=yes
