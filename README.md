@@ -4,7 +4,7 @@
 
 - Serverless lambda package analysis the list of share prices for a day and returns the maximum profit achieved when shares are brought and sold at a particular time
 - Takes `start_time` and `share_prices` as input
-- Output provides maximum profit that can achieved with corresponding buy and sell details
+- Output provides maximum profit that can achieved with corresponding buy and sell details with buy being at least a minute before the sell
 - Code and unit testing done using **Python** as the programming language
 - Validates `autopep8` and `pylint` standards
 - Repository follows [3 musketeers](https://amaysim.engineering/the-3-musketeers-how-make-docker-and-compose-enable-us-to-release-many-times-a-day-e92ca816ef17) approach of docker-compose, dockerfile and Makefile
@@ -83,7 +83,7 @@ make deploy
 * `template.yaml` provides the configuration of lambda deployment
 * Creates a lambda function in the deployment account.
 
-# Enhancements 
+# Required Enhancements 
 
 ## Integration testing
 I consider integration testing is a must for any service. 
