@@ -3,8 +3,10 @@ import datetime as dt
 
 def lambda_handler(event, _):
     try:
+        # Validate the received event
         if 'start_time' not in event or 'share_prices' not in event:
             raise ValueError("Event should have start_time and share_prices")
+        # Compute max profit from the share prices
         return SharePriceAnalysis.get_max_profit(event['start_time'], event['share_prices'])
     except ValueError as error:
         # Return the error response
@@ -14,7 +16,10 @@ def lambda_handler(event, _):
 
 
 class SharePriceAnalysis:
-
+    """
+    Analysis the share price values to compute the maximum profit that can be achieved for list of
+    share prices
+    """
     @staticmethod
     def get_max_profit(start_time, share_prices):
         print("get_max_profit:", start_time, share_prices)
@@ -22,7 +27,9 @@ class SharePriceAnalysis:
         formatted_start_time = TimeUtil.format_start_time(start_time)
         # initial values
         profit_details = {
+            # Max profit can be negative
             "max_profit": SharePriceAnalysis._get_profit(share_prices[0], share_prices[1]),
+            # buy before sell
             "buy_position": 0,
             "sell_position": 1
         }
@@ -31,16 +38,23 @@ class SharePriceAnalysis:
         smallest_position = 0
 
         for current_position in range(1, len(share_prices)):
+            # difference between the smallest and the current position
             current_profit = SharePriceAnalysis._get_profit(
                 share_prices[smallest_position], share_prices[current_position])
+
+            # If the difference is more than the registered profit,
+            # then use the current position as the max profit
+            # also record the buy and sell positions
             if current_profit > profit_details["max_profit"]:
                 profit_details["max_profit"] = current_profit
                 profit_details["buy_position"] = smallest_position
                 profit_details["sell_position"] = current_position
+
             # update the smallest price if current price is lesser than the smallest
             if share_prices[current_position] < share_prices[smallest_position]:
                 smallest_position = current_position
 
+        # Format the value to indicate the but and sell time as well
         return SharePriceAnalysis._format_profit_details(
             share_prices, profit_details, formatted_start_time)
 
@@ -66,6 +80,7 @@ class SharePriceAnalysis:
 
     @staticmethod
     def _validate_share_prices(share_prices):
+        # share prices should be list having atleast two values
         if not isinstance(share_prices, list):
             raise ValueError("share_prices should be List of numbers")
         if len(share_prices) <= 1:
@@ -73,6 +88,9 @@ class SharePriceAnalysis:
 
 
 class TimeUtil:
+    """
+    Uses datetime to parse and format the time
+    """
     @staticmethod
     def get_time_str(start_time, position_in_mins):
         if not isinstance(start_time, dt.datetime):
